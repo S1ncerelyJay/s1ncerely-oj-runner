@@ -66,6 +66,7 @@ function fileName(filePath) {
 
 function makeTopbar() {
   const top = element('section', 'topbar');
+  const runnerTitle = element('div', 'runner-title', 'S1ncerely OJ Runner');
   const fileRow = element('div', 'file-row');
   const fileInfo = element('button', 'active-file source-picker');
   fileInfo.type = 'button';
@@ -121,7 +122,7 @@ function makeTopbar() {
   const stop = button('■', 'button danger compact', '停止所有运行', () => post('stop'));
   stop.disabled = !state.running;
   actions.append(runAll, add, stop);
-  top.append(fileRow, actions);
+  top.append(runnerTitle, fileRow, actions);
   return top;
 }
 

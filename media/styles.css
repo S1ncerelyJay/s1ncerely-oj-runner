@@ -52,6 +52,15 @@ button:disabled {
   backdrop-filter: blur(12px);
 }
 
+.runner-title {
+  margin: 0 0 10px 1px;
+  color: var(--vscode-foreground);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  line-height: 1.3;
+}
+
 .file-row,
 .primary-actions,
 .case-header,
