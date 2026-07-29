@@ -1,0 +1,144 @@
+{
+  "name": "modern-oj-runner",
+  "displayName": "S1ncerely OJ Runner",
+  "description": "Run a selected solution against text or file-backed test cases directly in VS Code.",
+  "version": "0.1.3",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Testing",
+    "Other"
+  ],
+  "keywords": [
+    "competitive programming",
+    "online judge",
+    "test case",
+    "stdin"
+  ],
+  "activationEvents": [
+    "onView:s1ncerelyOjRunner.sidebar"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "s1ncerelyOjRunner.focus",
+        "title": "S1ncerely OJ Runner: 打开测试面板",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "s1ncerelyOjRunner.addCase",
+        "title": "S1ncerely OJ Runner: 新建测试用例",
+        "icon": "$(add)"
+      },
+      {
+        "command": "s1ncerelyOjRunner.runAll",
+        "title": "S1ncerely OJ Runner: 运行全部测试",
+        "icon": "$(run-all)"
+      },
+      {
+        "command": "s1ncerelyOjRunner.stop",
+        "title": "S1ncerely OJ Runner: 停止运行",
+        "icon": "$(debug-stop)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "s1ncerelyOjRunner",
+          "title": "S1ncerely OJ",
+          "icon": "media/activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "s1ncerelyOjRunner": [
+        {
+          "type": "webview",
+          "id": "s1ncerelyOjRunner.sidebar",
+          "name": "测试用例",
+          "icon": "media/activity.svg",
+          "contextualTitle": "S1ncerely OJ Runner"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "s1ncerelyOjRunner.runAll",
+          "when": "view == s1ncerelyOjRunner.sidebar",
+          "group": "navigation@1"
+        },
+        {
+          "command": "s1ncerelyOjRunner.addCase",
+          "when": "view == s1ncerelyOjRunner.sidebar",
+          "group": "navigation@2"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "s1ncerelyOjRunner.runAll",
+          "when": "resourceExtname =~ /\\.(py|c|cc|cpp|cxx|js|mjs)$/",
+          "group": "navigation@10"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "S1ncerely OJ Runner",
+      "properties": {
+        "s1ncerelyOjRunner.timeoutMs": {
+          "type": "number",
+          "default": 5000,
+          "minimum": 100,
+          "maximum": 300000,
+          "description": "每个测试用例的运行超时（毫秒）。"
+        },
+        "s1ncerelyOjRunner.outputLimitMB": {
+          "type": "number",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 64,
+          "description": "每个测试用例捕获的 stdout/stderr 最大容量（MB）。"
+        },
+        "s1ncerelyOjRunner.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Python 可执行文件路径。留空时优先使用 Python 扩展配置。"
+        },
+        "s1ncerelyOjRunner.nodePath": {
+          "type": "string",
+          "default": "node",
+          "description": "Node.js 可执行文件或命令。"
+        },
+        "s1ncerelyOjRunner.cCompiler": {
+          "type": "string",
+          "default": "gcc",
+          "description": "C 编译器可执行文件或命令。"
+        },
+        "s1ncerelyOjRunner.cppCompiler": {
+          "type": "string",
+          "default": "g++",
+          "description": "C++ 编译器可执行文件或命令。"
+        },
+        "s1ncerelyOjRunner.compilerArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "-O2",
+            "-pipe"
+          ],
+          "description": "传给 C/C++ 编译器的额外参数。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node test/runner.test.js",
+    "package": "npx @vscode/vsce package --no-dependencies"
+  }
+}
