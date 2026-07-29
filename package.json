@@ -5,6 +5,14 @@
   "version": "0.1.3",
   "publisher": "local",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/S1ncerelyJay/s1ncerely-oj-runner.git"
+  },
+  "homepage": "https://github.com/S1ncerelyJay/s1ncerely-oj-runner#readme",
+  "bugs": {
+    "url": "https://github.com/S1ncerelyJay/s1ncerely-oj-runner/issues"
+  },
   "engines": {
     "vscode": "^1.95.0"
   },

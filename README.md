@@ -2,6 +2,8 @@
 
 一个简洁、现代的算法刷题 VS Code 侧边栏运行器。无需离开编辑器，即可把文本或大数据文件作为标准输入传给指定代码，并查看运行结果。
 
+[下载最新版](https://github.com/S1ncerelyJay/s1ncerely-oj-runner/releases/latest) · [反馈问题](https://github.com/S1ncerelyJay/s1ncerely-oj-runner/issues)
+
 ## 功能
 
 - 管理多个测试用例，数据按工作区自动保存。
@@ -38,7 +40,7 @@
 
 ## 安装
 
-1. 下载最新的 `.vsix` 安装包。
+1. 从 [Releases](https://github.com/S1ncerelyJay/s1ncerely-oj-runner/releases/latest) 下载最新的 `.vsix` 安装包。
 2. 在 VS Code 中执行“扩展: 从 VSIX 安装…”。
 3. 选择下载的安装包，然后重新加载窗口。
 
@@ -55,4 +57,4 @@ npm run package
 
 ## 许可证
 
-MIT
+[MIT](LICENSE)
