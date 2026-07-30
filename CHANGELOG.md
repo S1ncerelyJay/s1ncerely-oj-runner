@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+- 修复 macOS Apple Clang 无法找到 `<bits/stdc++.h>` 的问题。
+- 扩展会在 macOS 上自动注入 C++17 标准库兼容头，无需修改刷题代码。
+- GitHub Actions 使用 macOS 环境直接验证兼容层。
+
 ## 0.1.5
 
 - 在插件面板顶部恢复纯文字 `S1ncerely OJ Runner` 标题。

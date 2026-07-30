@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   package:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,6 +20,10 @@ jobs:
           node-version: 20
       - name: Test
         run: npm test
+      - name: Test macOS bits compatibility
+        run: |
+          c++ -std=c++17 -I resources/include test/bits-compatibility.cpp -o /tmp/bits-compatibility
+          /tmp/bits-compatibility
       - name: Package VSIX
         run: npm run package
       - uses: actions/upload-artifact@v4

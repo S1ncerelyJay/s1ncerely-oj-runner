@@ -488,9 +488,25 @@ class RunnerViewProvider {
 
     const standard = language === 'c' ? '-std=c17' : '-std=c++17';
     const extraArgs = config.get('compilerArgs', ['-O2', '-pipe']);
+    const compatibilityArgs =
+      process.platform === 'darwin' &&
+      language === 'cpp' &&
+      active.document.getText().includes('bits/stdc++.h')
+        ? [
+            '-isystem',
+            path.join(this.context.extensionPath, 'resources', 'include')
+          ]
+        : [];
     const compileResult = await executeProcess({
       command: compiler,
-      args: [standard, ...extraArgs, active.path, '-o', executable],
+      args: [
+        standard,
+        ...extraArgs,
+        ...compatibilityArgs,
+        active.path,
+        '-o',
+        executable
+      ],
       cwd,
       timeoutMs: Math.max(config.get('timeoutMs', 5000), 30000),
       outputLimitBytes: config.get('outputLimitMB', 4) * 1024 * 1024,

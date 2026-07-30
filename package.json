@@ -2,7 +2,7 @@
   "name": "modern-oj-runner",
   "displayName": "S1ncerely OJ Runner",
   "description": "Run a selected solution against text or file-backed test cases directly in VS Code.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "local",
   "license": "MIT",
   "repository": {
